@@ -1,0 +1,4 @@
+R5T.D0065.Base - Base service definitions library for the IExecutableFilePathProvider and IExecutableDirectoryPathProvider services. (Similar to Macommania, except asynchronous.)
+
+Goals
+

@@ -1,0 +1,4 @@
+R5T.D0065.Default - Default service implementations library for the IExecutableFilePathProvider and IExecutableDirectoryPathProvider services. (Similar to Macommania, except asynchronous.)
+
+Goals
+
