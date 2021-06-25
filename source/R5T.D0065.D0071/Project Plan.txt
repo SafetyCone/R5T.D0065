@@ -1,0 +1,11 @@
+R5T.D0065.D0071 - D0071 (executing assembly anchor-based service implementations library for the IExecutableFilePathProvider and IExecutableDirectoryPathProvider services.
+
+Note, the D0071 ExecutingAssembly.IFilePathProvider service is used to provided the tradition "executable directory" path, which is the path containing all DLLs.
+
+This is the executable directory path you usually think of when running and debugging console applications.
+
+However, when code is run by a tool (like EF Core, or in MSTest), the entry point assembly (or first input argument to the process) is in a very different location than your DLLs.
+
+
+Goals
+
