@@ -2,9 +2,8 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
+using R5T.Dacia;
 using R5T.Lombardy;
-
-using R5T.T0063;
 
 
 namespace R5T.D0065
@@ -14,11 +13,10 @@ namespace R5T.D0065
         /// <summary>
         /// Adds the <see cref="ExecutableFilePathProvider"/> implementation of <see cref="IExecutableFilePathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
-        public static IServiceCollection AddExecutableFilePathProvider(this IServiceCollection services)
+        public static IServiceAction<IExecutableFilePathProvider> AddExecutableFilePathProviderAction(this IServiceCollection services)
         {
-            services.AddSingleton<IExecutableFilePathProvider, ExecutableFilePathProvider>();
-
-            return services;
+            var serviceAction = ServiceAction.New<IExecutableFilePathProvider>(() => services.AddExecutableFilePathProvider());
+            return serviceAction;
         }
 
         /// <summary>
@@ -35,6 +33,20 @@ namespace R5T.D0065
                 ;
 
             return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="ExecutableDirectoryPathProvider"/> implementation of <see cref="IExecutableDirectoryPathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static IServiceAction<IExecutableDirectoryPathProvider> AddExecutableDirectoryPathProviderAction(this IServiceCollection services,
+            IServiceAction<IExecutableFilePathProvider> executableFilePathProviderAction,
+            IServiceAction<IStringlyTypedPathOperator> stringlyTypedPathOperatorAction)
+        {
+            var serviceAction = ServiceAction.New<IExecutableDirectoryPathProvider>(() => services.AddExecutableDirectoryPathProvider(
+                executableFilePathProviderAction,
+                stringlyTypedPathOperatorAction));
+
+            return serviceAction;
         }
     }
 }

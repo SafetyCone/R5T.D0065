@@ -1,9 +1,8 @@
 ﻿using System;
 
-using Microsoft.Extensions.DependencyInjection;
-
 using R5T.Lombardy;
 
+using R5T.T0062;
 using R5T.T0063;
 
 using R5T.D0071.ExecutingAssembly;
@@ -11,21 +10,20 @@ using R5T.D0071.ExecutingAssembly;
 
 namespace R5T.D0065.D0071
 {
-    public static partial class IServiceCollectionExtensions
+    public static class IServiceActionExtensions
     {
         /// <summary>
         /// Adds the <see cref="ExecutableDirectoryPathProvider"/> implementation of <see cref="IExecutableDirectoryPathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
-        public static IServiceCollection AddExecutableDirectoryPathProvider(this IServiceCollection services,
+        public static IServiceAction<IExecutableDirectoryPathProvider> AddExecutableDirectoryPathProviderAction(this IServiceAction _,
             IServiceAction<IFilePathProvider> filePathProviderAction,
             IServiceAction<IStringlyTypedPathOperator> stringlyTypedPathOperatorAction)
         {
-            services.AddSingleton<IExecutableDirectoryPathProvider, ExecutableDirectoryPathProvider>()
-                .Run(filePathProviderAction)
-                .Run(stringlyTypedPathOperatorAction)
-                ;
+            var serviceAction = _.New<IExecutableDirectoryPathProvider>(services => services.AddExecutableDirectoryPathProvider(
+                filePathProviderAction,
+                stringlyTypedPathOperatorAction));
 
-            return services;
+            return serviceAction;
         }
     }
 }

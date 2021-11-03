@@ -3,12 +3,15 @@ using System.Threading.Tasks;
 
 using R5T.Lombardy;
 
+using R5T.T0064;
+
 using R5T.D0071.ExecutingAssembly;
 
 
 namespace R5T.D0065.D0071
 {
-    public class ExecutableDirectoryPathProvider : IExecutableDirectoryPathProvider
+    [ServiceImplementationMarker]
+    public class ExecutableDirectoryPathProvider : IExecutableDirectoryPathProvider, IServiceImplementation
     {
         private IFilePathProvider FilePathProvider { get; }
         private IStringlyTypedPathOperator StringlyTypedPathOperator { get; }

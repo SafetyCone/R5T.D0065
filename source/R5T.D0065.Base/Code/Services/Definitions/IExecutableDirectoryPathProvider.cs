@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using R5T.T0064;
+
 
 namespace R5T.D0065
 {
-    public interface IExecutableDirectoryPathProvider
+    [ServiceDefinitionMarker]
+    public interface IExecutableDirectoryPathProvider : IServiceDefinition
     {
         Task<string> GetExecutableDirectoryPath();
     }
