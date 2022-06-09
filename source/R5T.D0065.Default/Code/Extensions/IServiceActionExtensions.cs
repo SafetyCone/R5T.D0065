@@ -11,7 +11,7 @@ namespace R5T.D0065.Default
     public static class IServiceActionExtensions
     {
         /// <summary>
-        /// Adds the <see cref="ExecutableFilePathProvider"/> implementation of <see cref="IExecutableFilePathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// Adds the <see cref="ExecutableFilePathProvider"/> implementation of <see cref="IExecutableFilePathProvider"/> as a <see cref="Microsoft.Extensions.DependencyInjection.ServiceLifetime.Singleton"/>.
         /// </summary>
         public static IServiceAction<IExecutableFilePathProvider> AddExecutableFilePathProviderAction(this IServiceAction _)
         {
@@ -20,7 +20,7 @@ namespace R5T.D0065.Default
         }
 
         /// <summary>
-        /// Adds the <see cref="ExecutableDirectoryPathProvider"/> implementation of <see cref="IExecutableDirectoryPathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// Adds the <see cref="ExecutableDirectoryPathProvider"/> implementation of <see cref="IExecutableDirectoryPathProvider"/> as a <see cref="Microsoft.Extensions.DependencyInjection.ServiceLifetime.Singleton"/>.
         /// </summary>
         public static IServiceAction<IExecutableDirectoryPathProvider> AddExecutableDirectoryPathProviderAction(this IServiceAction _,
             IServiceAction<IExecutableFilePathProvider> executableFilePathProviderAction,
